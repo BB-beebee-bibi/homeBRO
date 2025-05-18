@@ -1,4 +1,3 @@
-
 """
 ROOcode Model Registry Module
 
@@ -27,7 +26,7 @@ class ModelRegistry:
     and query model capabilities.
     """
     
-    def __init__(self, default_model: str = "Claude-3.7-Sonnet"):
+    def __init__(self, default_model: str = "claude-3-sonnet"):
         """
         Initialize the ModelRegistry with a default model.
         
@@ -153,10 +152,10 @@ class ModelRegistry:
         """
         Register the default set of models with the registry.
         """
-        # Register Claude 3.7 Sonnet
-        self.register_model("Claude-3.7-Sonnet", {
-            "provider": "Anthropic",
-            "version": "3.7",
+        # Register ChatLLM Claude 3 Sonnet
+        self.register_model("claude-3-sonnet", {
+            "provider": "ChatLLM",
+            "version": "3",
             "size": "Sonnet",
             "capabilities": [
                 "natural_language_understanding",
@@ -177,65 +176,13 @@ class ModelRegistry:
                 "output_tokens": 0.00001550
             },
             "context_window": 200000,
-            "description": "Claude 3.7 Sonnet is a powerful and efficient model with strong reasoning and code generation capabilities."
+            "description": "Claude 3 Sonnet via ChatLLM is a powerful and efficient model with strong reasoning and code generation capabilities."
         })
         
-        # Register Claude 3.5 Sonnet
-        self.register_model("Claude-3.5-Sonnet", {
-            "provider": "Anthropic",
-            "version": "3.5",
-            "size": "Sonnet",
-            "capabilities": [
-                "natural_language_understanding",
-                "code_generation",
-                "reasoning",
-                "instruction_following",
-                "system_design",
-                "debugging"
-            ],
-            "performance": {
-                "reasoning": 0.85,
-                "code_generation": 0.8,
-                "system_design": 0.85,
-                "debugging": 0.75
-            },
-            "cost": {
-                "input_tokens": 0.00000300,
-                "output_tokens": 0.00001500
-            },
-            "context_window": 200000,
-            "description": "Claude 3.5 Sonnet is a balanced model with good performance across a range of tasks."
-        })
-        
-        # Register Claude 3.5 Haiku
-        self.register_model("Claude-3.5-Haiku", {
-            "provider": "Anthropic",
-            "version": "3.5",
-            "size": "Haiku",
-            "capabilities": [
-                "natural_language_understanding",
-                "code_generation",
-                "reasoning",
-                "instruction_following"
-            ],
-            "performance": {
-                "reasoning": 0.8,
-                "code_generation": 0.75,
-                "system_design": 0.7,
-                "debugging": 0.65
-            },
-            "cost": {
-                "input_tokens": 0.00000025,
-                "output_tokens": 0.00000125
-            },
-            "context_window": 200000,
-            "description": "Claude 3.5 Haiku is a fast and cost-effective model suitable for simpler tasks."
-        })
-        
-        # Register Claude 3.5 Opus
-        self.register_model("Claude-3.5-Opus", {
-            "provider": "Anthropic",
-            "version": "3.5",
+        # Register ChatLLM Claude 3 Opus
+        self.register_model("claude-3-opus", {
+            "provider": "ChatLLM",
+            "version": "3",
             "size": "Opus",
             "capabilities": [
                 "natural_language_understanding",
@@ -257,34 +204,87 @@ class ModelRegistry:
                 "output_tokens": 0.00007500
             },
             "context_window": 200000,
-            "description": "Claude 3.5 Opus is a high-performance model with exceptional reasoning and problem-solving capabilities."
+            "description": "Claude 3 Opus via ChatLLM is the most capable model, excelling at complex reasoning and system design tasks."
         })
         
-        # Register GPT-4o
-        self.register_model("GPT-4o", {
-            "provider": "OpenAI",
-            "version": "4o",
-            "size": "Standard",
+        # Register ChatLLM Claude 3 Haiku
+        self.register_model("claude-3-haiku", {
+            "provider": "ChatLLM",
+            "version": "3",
+            "size": "Haiku",
+            "capabilities": [
+                "natural_language_understanding",
+                "code_generation",
+                "reasoning",
+                "instruction_following"
+            ],
+            "performance": {
+                "reasoning": 0.8,
+                "code_generation": 0.75,
+                "system_design": 0.7,
+                "debugging": 0.65
+            },
+            "cost": {
+                "input_tokens": 0.00000025,
+                "output_tokens": 0.00000125
+            },
+            "context_window": 200000,
+            "description": "Claude 3 Haiku via ChatLLM is a fast and cost-effective model suitable for simpler tasks."
+        })
+        
+        # Register ChatLLM GPT-4
+        self.register_model("gpt-4", {
+            "provider": "ChatLLM",
+            "version": "4",
             "capabilities": [
                 "natural_language_understanding",
                 "code_generation",
                 "reasoning",
                 "instruction_following",
                 "system_design",
-                "debugging"
+                "debugging",
+                "complex_reasoning"
             ],
             "performance": {
-                "reasoning": 0.9,
+                "reasoning": 0.95,
                 "code_generation": 0.9,
-                "system_design": 0.85,
-                "debugging": 0.85
+                "system_design": 0.95,
+                "debugging": 0.9
             },
             "cost": {
-                "input_tokens": 0.00001000,
-                "output_tokens": 0.00003000
+                "input_tokens": 0.00003,
+                "output_tokens": 0.00006
             },
             "context_window": 128000,
-            "description": "GPT-4o is a versatile model with strong performance across a wide range of tasks."
+            "description": "GPT-4 via ChatLLM is a highly capable model with excellent reasoning and code generation abilities."
+        })
+        
+        # Register ChatLLM GPT-4 Turbo
+        self.register_model("gpt-4-turbo", {
+            "provider": "ChatLLM",
+            "version": "4",
+            "size": "Turbo",
+            "capabilities": [
+                "natural_language_understanding",
+                "code_generation",
+                "reasoning",
+                "instruction_following",
+                "system_design",
+                "debugging",
+                "complex_reasoning"
+            ],
+            "performance": {
+                "reasoning": 0.95,
+                "code_generation": 0.9,
+                "system_design": 0.95,
+                "debugging": 0.9
+            },
+            "cost": {
+                "input_tokens": 0.00001,
+                "output_tokens": 0.00003
+            },
+            "context_window": 128000,
+            "description": "GPT-4 Turbo via ChatLLM is a faster and more cost-effective version of GPT-4 with similar capabilities."
         })
         
         logger.info(f"Registered {len(self.models)} default models")
